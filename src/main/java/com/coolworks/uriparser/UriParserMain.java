@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import com.coolworks.uriparser.controller.UriParserController;
 
 public class UriParserMain extends Application {
-	
+
 	public static void main(String[] args) {
 		launch(UriParserMain.class, args);
 	}
@@ -32,12 +32,12 @@ public class UriParserMain extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private Parent getRootNodeFromFxmlFile() throws IOException {
 		URL uriParserViewFxmlUrl = getClass().getResource(URI_PARSER_VIEW_FXML_ABSOLUTE_NAME);
 		FXMLLoader fxmlLoader = new FXMLLoader(uriParserViewFxmlUrl);
 		fxmlLoader.setController(new UriParserController());
 		return fxmlLoader.load();
 	}
-	
+
 }

@@ -26,7 +26,7 @@ import org.loadui.testfx.GuiTest;
 import com.coolworks.uriparser.controller.UriParserController;
 
 public class UriParserTest extends GuiTest {
-	
+
 	private static Robot robot;
 
 	@BeforeClass
@@ -37,108 +37,108 @@ public class UriParserTest extends GuiTest {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Test
 	public void parseEmptyUri() throws URISyntaxException {
-				
+
 		click(PARSE_BUTTON_ID_SELECTOR);
-		
+
 		waitUntil(GuiTest.<TextField> find(URI_TEXT_FIELD_ID_SELECTOR), uriSchemeTextField -> uriSchemeTextField.getText().isEmpty());
 		waitUntil(GuiTest.<TextField> find(URI_SCHEME_TEXT_FIELD_ID_SELECTOR), uriSchemeTextField -> uriSchemeTextField.getText().isEmpty());
 		waitUntil(GuiTest.<TextField> find(URI_AUTHORITY_TEXT_FIELD_ID_SELECTOR), uriAuthorityTextField -> uriAuthorityTextField.getText().isEmpty());
 		waitUntil(GuiTest.<TextField> find(URI_PATH_TEXT_FIELD_ID_SELECTOR), uriPathTextField -> uriPathTextField.getText().isEmpty());
 		waitUntil(GuiTest.<TextField> find(URI_QUERY_TEXT_FIELD_ID_SELECTOR), uriQueryTextField -> uriQueryTextField.getText().isEmpty());
 		waitUntil(GuiTest.<TextField> find(URI_FRAGMENT_TEXT_FIELD_ID_SELECTOR), uriFragmentTextField -> uriFragmentTextField.getText().isEmpty());
-		
+
 		waitUntil(GuiTest.<TextField> find(URI_TEXT_FIELD_ID_SELECTOR), uriSchemeTextField -> uriSchemeTextField.isDisabled());
 		waitUntil(GuiTest.<Button> find(UriParserConstants.PARSE_BUTTON_ID_SELECTOR), parseButton -> parseButton.isDisabled());
-		
+
 	}
-	
+
 	@Test
 	public void parseValidUri() throws URISyntaxException {
-				
+
 		String validUriAsString = "scheme://authority/path?query#fragment";
 		URI validUri = new URI(validUriAsString);
-		
+
 		copyToClipboard(validUriAsString);
 		pasteFromClipboard(URI_TEXT_FIELD_ID_SELECTOR);
 		click(PARSE_BUTTON_ID_SELECTOR);
-		
+
 		waitUntil(GuiTest.<TextField> find(URI_TEXT_FIELD_ID_SELECTOR), uriTextField -> uriTextField.getText().equals(validUriAsString));
 		waitUntil(GuiTest.<TextField> find(URI_SCHEME_TEXT_FIELD_ID_SELECTOR), uriSchemeTextField -> uriSchemeTextField.getText().equals(validUri.getScheme()));
 		waitUntil(GuiTest.<TextField> find(URI_AUTHORITY_TEXT_FIELD_ID_SELECTOR), uriAuthorityTextField -> uriAuthorityTextField.getText().equals(validUri.getAuthority()));
 		waitUntil(GuiTest.<TextField> find(URI_PATH_TEXT_FIELD_ID_SELECTOR), uriPathTextField -> uriPathTextField.getText().equals(validUri.getPath()));
 		waitUntil(GuiTest.<TextField> find(URI_QUERY_TEXT_FIELD_ID_SELECTOR), uriQueryTextField -> uriQueryTextField.getText().equals(validUri.getQuery()));
 		waitUntil(GuiTest.<TextField> find(URI_FRAGMENT_TEXT_FIELD_ID_SELECTOR), uriFragmentTextField -> uriFragmentTextField.getText().equals(validUri.getFragment()));
-		
+
 		waitUntil(GuiTest.<TextField> find(URI_TEXT_FIELD_ID_SELECTOR), uriSchemeTextField -> uriSchemeTextField.isDisabled());
 		waitUntil(GuiTest.<Button> find(UriParserConstants.PARSE_BUTTON_ID_SELECTOR), parseButton -> parseButton.isDisabled());
-		
+
 	}
 
 	@Test
 	public void parseInvalidUri() throws URISyntaxException {
-				
+
 		String invalidUriAsString = "\\";
-		
+
 		copyToClipboard(invalidUriAsString);
 		pasteFromClipboard(URI_TEXT_FIELD_ID_SELECTOR);
 		click(PARSE_BUTTON_ID_SELECTOR);
-		
+
 		// main scene and exception dialog should be both visible
 		GuiTest.<Integer> waitUntil(getWindows()::size, is(2));
 		// close exception dialog
 		closeCurrentWindow();
-		
+
 		waitUntil(GuiTest.<TextField> find(URI_TEXT_FIELD_ID_SELECTOR), uriTextField -> uriTextField.getText().equals(invalidUriAsString));
 		waitUntil(GuiTest.<TextField> find(URI_SCHEME_TEXT_FIELD_ID_SELECTOR), uriSchemeTextField -> uriSchemeTextField.getText().isEmpty());
 		waitUntil(GuiTest.<TextField> find(URI_AUTHORITY_TEXT_FIELD_ID_SELECTOR), uriAuthorityTextField -> uriAuthorityTextField.getText().isEmpty());
 		waitUntil(GuiTest.<TextField> find(URI_PATH_TEXT_FIELD_ID_SELECTOR), uriPathTextField -> uriPathTextField.getText().isEmpty());
 		waitUntil(GuiTest.<TextField> find(URI_QUERY_TEXT_FIELD_ID_SELECTOR), uriQueryTextField -> uriQueryTextField.getText().isEmpty());
 		waitUntil(GuiTest.<TextField> find(URI_FRAGMENT_TEXT_FIELD_ID_SELECTOR), uriFragmentTextField -> uriFragmentTextField.getText().isEmpty());
-		
+
 		waitUntil(GuiTest.<TextField> find(URI_TEXT_FIELD_ID_SELECTOR), uriSchemeTextField -> !uriSchemeTextField.isDisabled());
 		waitUntil(GuiTest.<Button> find(UriParserConstants.PARSE_BUTTON_ID_SELECTOR), parseButton -> !parseButton.isDisabled());
-		
+
 	}
-	
+
 	@Test
 	public void resetAfterSuccesfullParsing() throws URISyntaxException {
-		
+
 		parseValidUri();
 		click(RESET_BUTTON_ID_SELECTOR);
-		
+
 		waitUntil(GuiTest.<TextField> find(URI_TEXT_FIELD_ID_SELECTOR), uriSchemeTextField -> uriSchemeTextField.getText().isEmpty());
 		waitUntil(GuiTest.<TextField> find(URI_SCHEME_TEXT_FIELD_ID_SELECTOR), uriSchemeTextField -> uriSchemeTextField.getText().isEmpty());
 		waitUntil(GuiTest.<TextField> find(URI_AUTHORITY_TEXT_FIELD_ID_SELECTOR), uriAuthorityTextField -> uriAuthorityTextField.getText().isEmpty());
 		waitUntil(GuiTest.<TextField> find(URI_PATH_TEXT_FIELD_ID_SELECTOR), uriPathTextField -> uriPathTextField.getText().isEmpty());
 		waitUntil(GuiTest.<TextField> find(URI_QUERY_TEXT_FIELD_ID_SELECTOR), uriQueryTextField -> uriQueryTextField.getText().isEmpty());
 		waitUntil(GuiTest.<TextField> find(URI_FRAGMENT_TEXT_FIELD_ID_SELECTOR), uriFragmentTextField -> uriFragmentTextField.getText().isEmpty());
-		
+
 		waitUntil(GuiTest.<TextField> find(URI_TEXT_FIELD_ID_SELECTOR), uriSchemeTextField -> !uriSchemeTextField.isDisabled());
 		waitUntil(GuiTest.<Button> find(UriParserConstants.PARSE_BUTTON_ID_SELECTOR), parseButton -> !parseButton.isDisabled());
-		
+
 	}
-	
+
 	@Test
 	public void resetAfterUnsuccesfullParsing() throws URISyntaxException {
-		
+
 		parseInvalidUri();
 		click(RESET_BUTTON_ID_SELECTOR);
-		
+
 		waitUntil(GuiTest.<TextField> find(URI_TEXT_FIELD_ID_SELECTOR), uriSchemeTextField -> uriSchemeTextField.getText().isEmpty());
 		waitUntil(GuiTest.<TextField> find(URI_SCHEME_TEXT_FIELD_ID_SELECTOR), uriSchemeTextField -> uriSchemeTextField.getText().isEmpty());
 		waitUntil(GuiTest.<TextField> find(URI_AUTHORITY_TEXT_FIELD_ID_SELECTOR), uriAuthorityTextField -> uriAuthorityTextField.getText().isEmpty());
 		waitUntil(GuiTest.<TextField> find(URI_PATH_TEXT_FIELD_ID_SELECTOR), uriPathTextField -> uriPathTextField.getText().isEmpty());
 		waitUntil(GuiTest.<TextField> find(URI_QUERY_TEXT_FIELD_ID_SELECTOR), uriQueryTextField -> uriQueryTextField.getText().isEmpty());
 		waitUntil(GuiTest.<TextField> find(URI_FRAGMENT_TEXT_FIELD_ID_SELECTOR), uriFragmentTextField -> uriFragmentTextField.getText().isEmpty());
-		
+
 		waitUntil(GuiTest.<TextField> find(URI_TEXT_FIELD_ID_SELECTOR), uriSchemeTextField -> !uriSchemeTextField.isDisabled());
 		waitUntil(GuiTest.<Button> find(UriParserConstants.PARSE_BUTTON_ID_SELECTOR), parseButton -> !parseButton.isDisabled());
-		
+
 	}
-	
+
 	@Override
 	protected Parent getRootNode() {
 		try {
@@ -154,16 +154,16 @@ public class UriParserTest extends GuiTest {
 
 	private void copyToClipboard(String string) {
 		Clipboard systemClipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-	    StringSelection stringSelection = new StringSelection(string);
-	    systemClipboard.setContents(stringSelection, stringSelection);
+		StringSelection stringSelection = new StringSelection(string);
+		systemClipboard.setContents(stringSelection, stringSelection);
 	}
-	
+
 	private void pasteFromClipboard(String query) {
 		click(query);
 		robot.keyPress(KeyEvent.VK_CONTROL);
-	    robot.keyPress(KeyEvent.VK_V);
-	    robot.keyRelease(KeyEvent.VK_V);
-	    robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_V);
+		robot.keyRelease(KeyEvent.VK_V);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
 	}
-	
+
 }
