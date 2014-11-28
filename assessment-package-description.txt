@@ -1,0 +1,60 @@
+          _____                    _____                    _____                    _____                    _____                    _____          
+         /\    \                  /\    \                  /\    \                  /\    \                  /\    \                  /\    \         
+        /::\    \                /::\    \                /::\    \                /::\    \                /::\____\                /::\    \        
+       /::::\    \              /::::\    \              /::::\    \              /::::\    \              /::::|   |               /::::\    \       
+      /::::::\    \            /::::::\    \            /::::::\    \            /::::::\    \            /:::::|   |              /::::::\    \      
+     /:::/\:::\    \          /:::/\:::\    \          /:::/\:::\    \          /:::/\:::\    \          /::::::|   |             /:::/\:::\    \     
+    /:::/__\:::\    \        /:::/__\:::\    \        /:::/__\:::\    \        /:::/  \:::\    \        /:::/|::|   |            /:::/__\:::\    \    
+   /::::\   \:::\    \      /::::\   \:::\    \      /::::\   \:::\    \      /:::/    \:::\    \      /:::/ |::|   |           /::::\   \:::\    \   
+  /::::::\   \:::\    \    /::::::\   \:::\    \    /::::::\   \:::\    \    /:::/    / \:::\    \    /:::/  |::|___|______    /::::::\   \:::\    \  
+ /:::/\:::\   \:::\____\  /:::/\:::\   \:::\    \  /:::/\:::\   \:::\    \  /:::/    /   \:::\ ___\  /:::/   |::::::::\    \  /:::/\:::\   \:::\    \ 
+/:::/  \:::\   \:::|    |/:::/__\:::\   \:::\____\/:::/  \:::\   \:::\____\/:::/____/     \:::|    |/:::/    |:::::::::\____\/:::/__\:::\   \:::\____\
+\::/   |::::\  /:::|____|\:::\   \:::\   \::/    /\::/    \:::\  /:::/    /\:::\    \     /:::|____|\::/    / ~~~~~/:::/    /\:::\   \:::\   \::/    /
+ \/____|:::::\/:::/    /  \:::\   \:::\   \/____/  \/____/ \:::\/:::/    /  \:::\    \   /:::/    /  \/____/      /:::/    /  \:::\   \:::\   \/____/ 
+       |:::::::::/    /    \:::\   \:::\    \               \::::::/    /    \:::\    \ /:::/    /               /:::/    /    \:::\   \:::\    \     
+       |::|\::::/    /      \:::\   \:::\____\               \::::/    /      \:::\    /:::/    /               /:::/    /      \:::\   \:::\____\    
+       |::| \::/____/        \:::\   \::/    /               /:::/    /        \:::\  /:::/    /               /:::/    /        \:::\   \::/    /    
+       |::|  ~|               \:::\   \/____/               /:::/    /          \:::\/:::/    /               /:::/    /          \:::\   \/____/     
+       |::|   |                \:::\    \                  /:::/    /            \::::::/    /               /:::/    /            \:::\    \         
+       \::|   |                 \:::\____\                /:::/    /              \::::/    /               /:::/    /              \:::\____\        
+        \:|   |                  \::/    /                \::/    /                \::/____/                \::/    /                \::/    /        
+         \|___|                   \/____/                  \/____/                  ~~                       \/____/                  \/____/         
+                                                                                                                                                      
+
+============
+INTRODUCTION
+============
+This package includes:
+- a "bin" folder containing the binary distribution of the application as per assignment description;
+- a "project" folder containing the maven project useful for evaluating and building the source code.
+
+==================
+BUILD REQUIREMENTS
+==================
+- JDK 8u20 (it WON'T build properly with previous version because of the last ControlsFX library version used);
+- Maven 3.2.1 (it is likely to build also with previous Maven 3 version);
+- Internet connection! :)
+
+NOTE: please make sure that JAVA_HOME exists in your user variables or in the system variables, it 
+is set to the location of your JDK 8u20 and that %JAVA_HOME%\bin is in your Path environment variable.
+Even though this note refers to Windows environments, it applies similarly to Unix-based operating systems.
+
+======================
+EXECUTION REQUIREMENTS
+======================
+- JRE 8u20 (it WON'T run properly with previous version because of the last ControlsFX library version used);
+
+NOTE: With previous JRE 8 updates, no error dialog will show up in case of malformed URI. 
+
+=========================
+BUILD AND EXECUTION STEPS
+=========================
+From the command line:
+1) change the current directory to be the "project" folder (i.e. the one containing the pom.xml file);
+2) type "mvn clean package" or "mvn clean package -Dmaven.test.skip=true" to build with *(1) or without 
+unit tests respectively and wait for maven to generate the zip file *(2) in the "project/target" folder;
+3) extract the content of the zip file (executable jar and "lib" folder) in a directory of your choice;
+4) from that directory, type "java -jar <executable-jar-name>" or double click on the executable jar.
+
+NOTE 1: In case of build with unit tests, please make sure to not interfere with mouse/keyboard actions.
+NOTE 2: The content of the zip file generated at point 2 should look exactly as the one in the "bin" folder.

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import com.coolworks.uriparser.*?>
+
+<GridPane hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="600.0" vgap="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="80.0" />
+    <ColumnConstraints hgrow="SOMETIMES" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1">
+         <children>
+            <TextField id="uri-text-field" fx:id="uriTextField" HBox.hgrow="ALWAYS" />
+            <Button id="parse-button" fx:id="parseButton" mnemonicParsing="false" text="Parse" />
+            <Button id="reset-button" fx:id="resetButton" mnemonicParsing="false" text="Reset" />
+         </children>
+      </HBox>
+      <Label text="URI:" GridPane.halignment="RIGHT">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label text="Scheme:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+      <Label text="Authority:" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+      <Label text="Path:" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+      <Label text="Query:" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+      <Label text="Fragment:" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+      <TextField id="uri-scheme-text-field" fx:id="uriSchemeTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextField id="uri-authority-text-field" fx:id="uriAuthorityTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField id="uri-path-text-field" fx:id="uriPathTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <TextField id="uri-query-text-field" fx:id="uriQueryTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <TextField id="uri-fragment-text-field" fx:id="uriFragmentTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</GridPane>

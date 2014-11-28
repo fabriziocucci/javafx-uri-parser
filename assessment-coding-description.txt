@@ -1,0 +1,5 @@
+Software Developer Coding Assessment
+
+Using a language of your choice, write a small GUI program that takes a URI, breaks it down into its individual components as defined in RFC 3986 and displays those components to the user.
+
+Your entry should include any source files and assets required to build and run the program, and should also include a README.txt with any useful notes on the building or the operation of the program.
